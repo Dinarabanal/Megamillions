@@ -3,9 +3,13 @@ package edu.cnm.deepdive.megamillions;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -29,25 +33,41 @@ public class PickAdapter extends RecyclerView.Adapter<PickAdapter.Holder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Holder holder, int i) {
+    public void onBindViewHolder(@NonNull Holder holder, int position) {
+     holder.bind();
 
     }
 
     @Override
     public int getItemCount() {
-      return 0;
+      return picks.size();
     }
 
 
-    public class Holder extends RecyclerView.ViewHolder {
+    public class Holder extends RecyclerView.ViewHolder
+        implements View.OnCreateContextMenuListener {
+
+      private TextView view;
 
       public Holder(@NonNull View view) {
         super(view);
-        //Assume that view is a TextView
+       this.view = (TextView) view;
       }
 
+      private void bind() {
+        int [] numbers = picks.get(getAdapterPosition());
+        view.setText(Arrays.toString(numbers));
+        view.setOnCreateContextMenuListener(this);
+  }
 
-
+      @Override
+      public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
+        menu.add(R.string.delete_pick).setOnMenuItemClickListener(item ->  {
+          picks.remove(getAdapterPosition());
+          notifyItemRemoved(getAdapterPosition());
+          return true;
+        });
+      }
     }
 
 
