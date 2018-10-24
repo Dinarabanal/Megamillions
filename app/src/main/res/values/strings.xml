@@ -1,6 +1,7 @@
 <resources>
   <string name="app_name">Megamillions</string>
-  <string name="action_settings">Settings</string>
+  <string name="clear_all_picks">Settings</string>
   <string name="delete_pick">Delete</string>
-  <string name="clear">clear</string>
+  <string name="pick_number_format">clear</string>
+  <string name="clear_all_format">%d picks deleted</string>
 </resources>

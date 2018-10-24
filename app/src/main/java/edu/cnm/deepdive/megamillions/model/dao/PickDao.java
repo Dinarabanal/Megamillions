@@ -27,6 +27,7 @@ public interface PickDao {
     @Delete
     int delete(Pick pick);
 
-
+@Query("DELETE FROM Pick")
+    int nuke();
 
 }

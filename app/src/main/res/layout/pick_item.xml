@@ -7,7 +7,7 @@
   android:paddingBottom="4dp"
   xmlns:app="http://schemas.android.com/apk/res-auto">
 
-//TODO Define and use styles for numbers, different style for last number.
+//TODO Define and use styles for numbers, different style for last numbers.
   <android.support.constraint.Guideline
     android:id="@+id/guideline_0"
     android:layout_width="wrap_content"

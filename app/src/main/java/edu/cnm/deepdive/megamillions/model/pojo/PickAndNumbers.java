@@ -12,7 +12,7 @@ public class PickAndNumbers {
   private Pick pick;
 
   @Relation(parentColumn = "pick_id", entityColumn = "pick_id")
-  private List<PickNumber> number;
+  private List<PickNumber> numbers;
 
   public Pick getPick() {
     return pick;
@@ -22,11 +22,11 @@ public class PickAndNumbers {
     this.pick = pick;
   }
 
-  public List<PickNumber> getNumber() {
-    return number;
+  public List<PickNumber> getNumbers() {
+    return numbers;
   }
 
-  public void setNumber(List<PickNumber> number) {
-    this.number = number;
+  public void setNumbers(List<PickNumber> numbers) {
+    this.numbers = numbers;
   }
 }
