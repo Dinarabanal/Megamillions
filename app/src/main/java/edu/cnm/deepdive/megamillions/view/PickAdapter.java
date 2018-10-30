@@ -2,8 +2,8 @@ package edu.cnm.deepdive.megamillions.view;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
@@ -22,7 +22,6 @@ public class PickAdapter extends RecyclerView.Adapter<PickAdapter.Holder> {
   private Context context;
   private List<PickAndNumbers> picks;
 
-
   public PickAdapter(Context context, List<PickAndNumbers> picks) {
     this.context = context;
     this.picks = picks;
@@ -37,17 +36,19 @@ public class PickAdapter extends RecyclerView.Adapter<PickAdapter.Holder> {
 
   @Override
   public void onBindViewHolder(@NonNull Holder holder, int position) {
-    holder.bind(); // TODO Pass current PickWithNumbers instance.
-    // TODO Note that ternary (or if-else) is needed to deal with re-bound holders.
-    int background = (position % 2 == 0)
-        ? ContextCompat.getColor(context, R.color.pickBackground)
-        : ContextCompat.getColor(context, R.color.pickBackgroundAlternate);
-    holder.itemView.setBackgroundColor(background);
+    holder.bind();
+    if (position % 2 == 0) {
+      holder.itemView.setBackgroundColor(Color.argb(16, 255, 255, 0));
+    } else {
+      holder.itemView.setBackgroundColor(Color.argb(16, 0, 255, 255));
+    }
   }
+
 
   @Override
   public int getItemCount() {
     return picks.size();
+
   }
 
   public class Holder extends RecyclerView.ViewHolder
